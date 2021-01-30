@@ -5,7 +5,8 @@ const userSchema = new Schema({
   name: String,
   lastname: String,
   age: Number,
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: Date,
 });
 
 export default db.model('User', userSchema);

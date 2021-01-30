@@ -37,15 +37,17 @@ router.delete('/:id', async (req, res, _next) => {
 
 router.put('/:id', async (req, res, _next) => {
     try {
-        const userUpdated = await User.findOneAndReplace(
+        await User.findOneAndReplace(
             {
                 _id: req.params.id
             }, {
                 name: req.body.name,
                 lastName: req.body.lastName,
                 age: req.body.age,
+                updatedAt: new Date(),
             });
     
+        const userUpdated = await User.findById(req.params.id); 
         res.json(userUpdated);
     } catch (err) {
         res.status(500).send(err);
