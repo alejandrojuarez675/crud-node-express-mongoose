@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true })); // to support URL-encoded bodie
 // routes
 app.use('/users', userRouter);
 
-app.listen(3000, () => {
-    console.log('Connected to port 3000')
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server run on port ${port}`)
 });
